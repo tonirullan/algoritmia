@@ -20,13 +20,17 @@ public class Informacio extends JPanel{
     JLabel l = new JLabel();
     
     public Informacio(){
-        this.setPreferredSize(new Dimension(400,360));
+        this.setPreferredSize(new Dimension(390,355));
         l.setText("   ");
         this.add(l);
         ta.setEditable(false);
         JScrollPane sp = new JScrollPane(ta);
-        sp.setPreferredSize(new Dimension(400, 335));
+        sp.setPreferredSize(new Dimension(390, 320));
         this.add(sp);
+    }
+    
+    public void setTa(String s){
+        this.ta.setText(s);
     }
     
     public void setL(String s){
