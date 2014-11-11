@@ -7,6 +7,8 @@ package practica1;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -20,6 +22,21 @@ public class Practica1 extends JFrame{
     List<Curs> CursList = new ArrayList<Curs>();
     JMenuItem menuOpcion11,menuOpcion21,menuOpcion31;
     Informacio informacio;
+    
+    ActionListener a1 = new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(e.getSource()==menuOpcion11){
+                informacio.setL("Cursos");
+            }
+            if(e.getSource()==menuOpcion21){
+                informacio.setL("Assignatures");
+            }
+            if(e.getSource()==menuOpcion31){
+                informacio.setL("Estudiants");
+            }
+        }
+    };
     
     public Practica1(){
         super("Gestió d'un col·legi");
@@ -41,6 +58,10 @@ public class Practica1 extends JFrame{
         menu1.add(menuOpcion11);
         menu2.add(menuOpcion21);
         menu3.add(menuOpcion31);
+        
+        menuOpcion11.addActionListener(a1);
+        menuOpcion21.addActionListener(a1);
+        menuOpcion31.addActionListener(a1);
         
         menuBar.add(menu1);
         menuBar.add(menu2);

@@ -21,14 +21,16 @@ public class Informacio extends JPanel{
     
     public Informacio(){
         this.setPreferredSize(new Dimension(400,360));
-        
-        l.setText("");
-        l.setPreferredSize(new Dimension(400, 15));
+        l.setText("   ");
         this.add(l);
         ta.setEditable(false);
         JScrollPane sp = new JScrollPane(ta);
         sp.setPreferredSize(new Dimension(400, 335));
         this.add(sp);
-        
+    }
+    
+    public void setL(String s){
+        this.l.setText(s);
+        this.repaint();
     }
 }
