@@ -5,17 +5,17 @@
  */
 package practica1;
 
-/**
- *
- * @author Toni
- */
-public class Practica1 {
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFrame;
 
-    /**
-     * @param args the command line arguments
-     */
+
+public class Practica1 extends JFrame{
+
+    List<Curs> CursList = new ArrayList<Curs>();
     public static void main(String[] args) {
-        System.out.println("test");
+        Practica1 Colegi = new Practica1();
+        Colegi.setVisible(true);
     }
     
 }
