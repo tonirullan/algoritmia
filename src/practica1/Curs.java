@@ -30,4 +30,7 @@ public class Curs {
         return nom;
     }
     
+    public void setId(int id){
+        this.id = id;
+    }
 }

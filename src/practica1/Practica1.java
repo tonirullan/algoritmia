@@ -20,27 +20,40 @@ import javax.swing.JOptionPane;
 
 public class Practica1 extends JFrame{
 
-    List<Curs> CursList = new ArrayList<Curs>();
-    JMenuItem   menuOpcion11,menuOpcion12,
+    List<Curs> cursList = new ArrayList<Curs>();
+    JMenuItem   menuOpcion11,menuOpcion12,menuOpcion13,
                 menuOpcion21,
                 menuOpcion31;
     Informacio informacio;
     String aux,nom;
     int id;
-    Curs c;
+    Curs c,cursSeleccionat;
     
     ActionListener a1 = new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getSource()==menuOpcion11){
                 informacio.setL("Cursos");
+                informacio.setTa(getCursos());
             }
             if(e.getSource()==menuOpcion12){
                 nom = JOptionPane.showInputDialog("Nom del curs", null);
                 if(nom!=null&&!"".equals(nom)){
-                    c = new Curs(CursList.size()+1,nom);
-                    CursList.add(c);
+                    c = new Curs(cursList.size()+1,nom);
+                    cursList.add(c);
+                    if(informacio.l.getText().equals("Cursos")) informacio.setTa(getCursos());
                 }
+            }
+            if(e.getSource()==menuOpcion13){
+                aux = JOptionPane.showInputDialog("ID del curs a eliminar", null);
+                if(aux!=null&&!"".equals(aux)){
+                    id = Integer.parseInt(aux);
+                    if(id>0 && id<=cursList.size()){
+                        cursList.remove(id-1);
+                    }
+                }
+                ordenarCursos();
+                if(informacio.l.getText().equals("Cursos")) informacio.setTa(getCursos());
             }
             if(e.getSource()==menuOpcion21){
                 informacio.setL("Assignatures");
@@ -48,6 +61,7 @@ public class Practica1 extends JFrame{
             if(e.getSource()==menuOpcion31){
                 informacio.setL("Estudiants");
             }
+            informacio.repaint();
         }
     };
     
@@ -62,6 +76,7 @@ public class Practica1 extends JFrame{
         JMenu menu1 = new JMenu("CURSOS");
         menuOpcion11 = new JMenuItem("MOSTRAR CURSOS");
         menuOpcion12 = new JMenuItem("NOU CURS");
+        menuOpcion13 = new JMenuItem("ELIMINAR CURS");
         
         JMenu menu2 = new JMenu("ASSIGNATURES");
         menuOpcion21 = new JMenuItem("MOSTRAR ASSIGNATURES");
@@ -71,11 +86,13 @@ public class Practica1 extends JFrame{
         
         menu1.add(menuOpcion11);
         menu1.add(menuOpcion12);
+        menu1.add(menuOpcion13);
         menu2.add(menuOpcion21);
         menu3.add(menuOpcion31);
         
         menuOpcion11.addActionListener(a1);
         menuOpcion12.addActionListener(a1);
+        menuOpcion13.addActionListener(a1);
         menuOpcion21.addActionListener(a1);
         menuOpcion31.addActionListener(a1);
         
@@ -91,10 +108,16 @@ public class Practica1 extends JFrame{
     
     public String getCursos(){
         String s = "";
-        for(int i=0;i<CursList.size();i++){
-            s += "ID: "+CursList.get(i).getId()+"  Nom: "+CursList.get(i).getNom() + "\n";
+        for(int i=0;i<cursList.size();i++){
+            s += "ID: "+cursList.get(i).getId()+"  Nom: "+cursList.get(i).getNom() + "\n";
         }
         return s;
+    }
+    
+    public void ordenarCursos(){
+        for(int i=0;i<cursList.size();i++){
+            cursList.get(i).setId(i+1);
+        }
     }
     
     public static void main(String[] args) {
