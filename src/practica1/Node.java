@@ -6,6 +6,8 @@
 
 package practica1;
 
+import java.util.*;
+
 /**
  *
  * @author User

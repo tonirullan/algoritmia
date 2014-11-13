@@ -30,5 +30,15 @@ public class Assignatura {
     public String getNom() {
         return nom;
     }
-    
+    public boolean equals(Object o){
+        if(!(o instanceof Assignatura)){
+            return false;
+        }
+        Assignatura e=(Assignatura)o;
+        if(this.id==e.getId()){
+           return true; 
+        }else{
+            return false;
+        }
+    }
 }

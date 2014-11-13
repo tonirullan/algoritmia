@@ -33,4 +33,15 @@ public class Curs {
     public void setId(int id){
         this.id = id;
     }
+    public boolean equals(Object e){
+        if(!(e instanceof Curs)){
+            return false;
+        }
+        Curs c=(Curs)e;
+        if(this.id==c.getId()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

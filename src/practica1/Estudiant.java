@@ -22,4 +22,18 @@ public class Estudiant {
         this.nom = s;
         this.curs = c;
     }
+   public int getId(){
+       return(this.id);
+   }
+   public boolean equals(Object o){
+        if(!(o instanceof Estudiant)){
+            return false;
+        }
+        Estudiant e=(Estudiant)o;
+        if(this.id==e.getId()){
+           return true; 
+        }else{
+            return false;
+        }
+   }
 }
